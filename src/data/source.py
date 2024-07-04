@@ -15,3 +15,10 @@ class DataSource:
     @property
     def df(self) -> pd.DataFrame:
         return self._data
+    
+    def sorted_year_groups(self):
+        years_groups = self._data[DataSchema.year_groups].unique().astype(object)
+        years_groups.sort()
+        return years_groups
+
+    

@@ -6,7 +6,7 @@ from src.components.layout import create_layout
 from src.data.loader import load_data
 from src.data.source import DataSource
 
-DATA_PATH = "./data/data.csv"
+DATA_PATH = "./data/data.xlsx"
 
 
 def main() -> None:
