@@ -13,3 +13,5 @@ AIRCRAFT_SIZE = 'aircraft-size'
 TABLE_ONE = 'table-one'
 
 TABLE_TWO = 'table-two'
+
+DROPDOWN= 'dropdown'

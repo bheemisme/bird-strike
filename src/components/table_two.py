@@ -8,6 +8,6 @@ def render(app: Dash, source: DataSource) -> html.Div:
 
     return html.Div(
         dcc.Graph(figure=plot_table_two(source)),
-        id=ids.TABLE_ONE,
+        id=ids.TABLE_TWO,
         className='w-50'
     )

@@ -60,6 +60,7 @@ def plot_phase_damage(ds: DataSource) -> go.Figure:
             DataSchema.effect_indicated_damage: "Is Damaged?"
         }
     )
+
     fig.update_layout(
         yaxis_title="Actual Number of bird strikes",
         xaxis_title="Phase of flight",
@@ -91,17 +92,19 @@ def plot_wildlife_size_nbr_struck_actual(ds: DataSource) -> go.Figure:
 
 
 def plot_damaged_pie(ds: DataSource) -> go.Figure:
-    pivot = ds.df.groupby(by=["Effect: Indicated Damage"]).count()["Record ID"]
+    pivot = ds.df.groupby(by=[DataSchema.effect_indicated_damage]).count()[
+        "Record ID"]
 
     labels = list(
         map(lambda x: "Caused damage" if x else "No damage", pivot.keys()))
+
     vals = list(pivot)
 
     fig = px.pie(
         data_frame=ds.df,
         names=labels,
         values=vals,
-        title="No. of Aircrafts / Indicated Damage"
+        title=f"No. of Aircrafts / Indicated Damage"
     )
 
     return fig
@@ -151,6 +154,7 @@ def plot_damage_any_cost(ds: DataSource) -> go.Figure:
 
 
 def plot_aircraft_size(ds: DataSource) -> go.Figure:
+
     fig = make_subplots(rows=1, cols=2, subplot_titles=(
         "Damage / Aircraft Size", "Aircraft Size / Altitude"))
 
@@ -212,9 +216,12 @@ def plot_table_two(ds: DataSource) -> go.Figure:
         DataSchema.aircraft_nbr_engines,
         DataSchema.feet_above_ground
     )
+
     table2 = go.Table(
-        header=dict(values=[DataSchema.aircraft_nbr_engines,
-                            DataSchema.feet_above_ground]),
+        header=dict(values=[
+            DataSchema.aircraft_nbr_engines,
+            DataSchema.feet_above_ground
+        ]),
         cells=dict(
             values=[
                 list(t2.keys()),

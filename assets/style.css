@@ -14,3 +14,18 @@
 #aircraft-size {
     width: 100%;
 }
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding: 1rem 0;
+
+}
+
+.nav-link {
+    margin-left: 2rem;
+    text-align: center;
+    text-decoration: underline;
+}
