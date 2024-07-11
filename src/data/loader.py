@@ -32,7 +32,7 @@ class DataSchema:
     wildlife_species = "Wildlife: Species"
     
     conditions_sky = "Conditions: Sky"
-    pilot_warned_of_birds_or_wildlife = "Pilot warned of birds or wildlife"
+    pilot_warned_of_birds_or_wildlife = "Pilot warned of birds or wildlife?"
     feet_above_ground = "Feet above ground"
 
     nbr_of_people_injured = "Number of people injured"
@@ -41,6 +41,7 @@ class DataSchema:
     year = "year"
     year_groups = "year-groups"
     any_cost = "Any Cost?"
+    altitude_groups = "altitude_groups"
 
 
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
@@ -150,9 +151,14 @@ def add_year_groups(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def add_any_cost(df: pd.DataFrame) -> pd.DataFrame:
-    df["Any Cost?"] = df["Cost: Total $"].map(lambda x: False if x == 0 else True)
+    df[DataSchema.any_cost] = df[DataSchema.cost_total].map(lambda x: False if x == 0 else True)
     return df
 
+def add_altitude_groups(df: pd.DataFrame) -> pd.DataFrame:
+    
+    df[DataSchema.altitude_groups] = pd.cut(x=df[DataSchema.feet_above_ground],bins=10,include_lowest=True)
+    df[DataSchema.altitude_groups] = df[DataSchema.altitude_groups].map(lambda x: f'{x.left}-{x.right}')
+    return df
 
 def compose(*functions: Preprocessor) -> Preprocessor:
     return reduce(lambda f, g: lambda x: g(f(x)), functions)
@@ -170,6 +176,7 @@ def load_data(path: str) -> pd.DataFrame:
         mask_column_two,
         change_types_2,
         add_year_groups,
-        add_any_cost
+        add_any_cost,
+        add_altitude_groups
     )
     return preprocessor(data)

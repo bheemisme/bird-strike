@@ -18,7 +18,7 @@
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     padding: 1rem 0;
 
@@ -27,5 +27,16 @@
 .nav-link {
     margin-left: 2rem;
     text-align: center;
-    text-decoration: underline;
+    border: 2px solid rgb(18, 168, 243);
+
+    padding: 2px .5em;
+    border-radius: .5rem;
+    text-transform: capitalize;
+
+}
+
+
+.nav-link:hover {
+    color: white;
+    background-color: rgba(18, 191, 239, 0.621);
 }

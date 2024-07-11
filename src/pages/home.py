@@ -8,7 +8,8 @@ from src.components import \
         wildlife_size_nbr_struck_actual,
         damaged_pie,
         any_cost,
-        aircraft_size
+        aircraft_size,
+        pilot_warnings
     )
 
 
@@ -27,6 +28,7 @@ def create_layout(app: Dash, source: DataSource) -> html.Div:
                              damaged_pie.render(app, source),
                              any_cost.render(app, source),
                              aircraft_size.render(app, source),
+                             pilot_warnings.render(app, source),
                              
                          ])
             ])

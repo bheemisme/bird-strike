@@ -10,8 +10,30 @@ ANY_COST = 'any-cost'
 
 AIRCRAFT_SIZE = 'aircraft-size'
 
-TABLE_ONE = 'table-one'
+AVERAGE_HEIGHT_WILDLIFE = 'avg-ht-wlife'
 
-TABLE_TWO = 'table-two'
+AVERAGE_HEIGHT_TABLE = 'avg-ht-table'
+
+TOP_AIRLINES = 'top-airlines'
+
+TOP_AIRPORTS = 'top-airports'
 
 DROPDOWN= 'dropdown'
+
+COSTS_HIST = 'costs-hist'
+
+HEIGHTS_HIST = 'heights-hist'
+
+PILOTS_WARNINGS = 'pilot-warnings'
+
+ENGINES_PIE = 'engines-pie'
+
+HEIGHTS = 'heights'
+
+PHASE_HEIGHT = 'phase-height'
+
+EFFECT_IMPACT = 'effect-impact'
+
+AIRCRAFT_ALTITUDE = 'aircraft-altitude'
+
+STRIKE_ALTITUDE = 'strike-altitude'
