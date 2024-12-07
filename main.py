@@ -5,11 +5,15 @@ from src.data.loader import load_data
 from src.data.source import DataSource
 from src.pages import home, tables, summary
 from src.components import navbar
+import os
+
+PORT = os.environ['PORT']
 DATA_PATH = "./data/data.xlsx"
 
 
 def main():
-    app = Dash(external_stylesheets=[BOOTSTRAP], title="Bird Strike Dashboard")
+    app = Dash(external_stylesheets=[BOOTSTRAP], 
+               title="Bird Strike Dashboard")
 
     data = load_data(DATA_PATH)
     data = DataSource(data)
@@ -36,7 +40,7 @@ def main():
         elif pathname == '/summary':
             return summary.create_layout(app, data)
 
-    app.run(debug=True, port="8080")
+    app.run(host="0.0.0.0",debug=True, port=PORT)
 
 
 if __name__ == '__main__':
